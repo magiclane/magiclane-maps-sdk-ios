@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 >
 > Due to improvements of our SDK and map data, we kindly ask you to update your applications and projects with any SDK revision released starting with October 2024 in order to continue using the online Magic Earth map-related services and to continue receiving map updates.
 
+## [2.1.2] - [7.1.25.42.DB834EFB] - 2025-10-17
+### Fixed
+ 
+- Fix related to route simulation
+
 ## [2.1.1] - [7.1.25.42.613D87EA] - 2025-10-16
 ### Added
 
