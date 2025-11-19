@@ -8,6 +8,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 >
 > Due to improvements of our SDK and map data, we kindly ask you to update your applications and projects with any SDK revision released starting with October 2024 in order to continue using the online Magic Earth map-related services and to continue receiving map updates.
 
+## [2.1.3] - [7.1.25.42.ECFEC713] - 2025-11-19
+### Removed
+
+- Removed deprecated API in `AlarmContextDelegate`, `MarkerCollectionObjectRenderSettings`, `RoutePreferencesObject.h`. 
+
+### Added
+
+- New class available: `LogActivityFileObject` 
+
+- New method available in `AlarmContext.h`:
+
+  `(void)alarmContext:(nonnull AlarmContext *)alarmContext onCountryLeft:(NSString *)countryCode`
+  
+  `(void)alarmContext:(nonnull AlarmContext *)alarmContext onCountryEntered:(NSString *)code`  
+
+- New method available in `GEMSdk.h`:
+
+  `(BOOL)isInitialized`
+
+- New method available in `GEMSdkDelegate.h`:
+
+  `(void)onWorldwideRoadMapRefreshed`
+
+- New method available in `LogBookmarksContext.h`:
+
+  `(void)addActivityFiles:(nonnull NSArray < LogActivityFileObject * > *)activityFiles filePath:(nonnull NSString *)filePath`
+
+  `(nonnull NSArray < LogActivityFileObject * > *)getActivityFiles:(nonnull NSString *)filePath;`
+
+- New method available in `SoundContext.h`:
+
+  `(void)setUseTtsWithLanguage:(nonnull NSString *)language completionHandler:(nonnull void(^)(BOOL success))handler`
+
+  `(void)setUseTtsWithLanguage:(nonnull NSString *)language identifier:(nonnull NSString *)identifier completionHandler:(nonnull void(^)(BOOL success))handler`
+
 ## [2.1.2] - [7.1.25.42.DB834EFB] - 2025-10-17
 ### Fixed
  
