@@ -1,7 +1,7 @@
 version = 1
 SPDX-PackageName = "maps-sdk-ios"
 SPDX-PackageSupplier = "magiclane-developer@users.noreply.github.com"
-SPDX-PackageDownloadLocation = "https://github.com/magiclane-international/maps-sdk-ios"
+SPDX-PackageDownloadLocation = "https://github.com/magiclane/magiclane-maps-sdk-ios"
 SPDX-PackageComment = "Get the binary frameworks of the MagicLane Maps SDK for iOS through SPM."
 
 [[annotations]]

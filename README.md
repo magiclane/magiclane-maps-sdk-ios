@@ -23,7 +23,7 @@ The [Magic Lane Studio](https://developer.magiclane.com/studio) can be used to m
 2. Go to **File > Add Package Dependencies...**
 3. In the search bar, enter the repository URL:
    ```
-   https://github.com/magiclane-international/maps-sdk-ios
+   https://github.com/magiclane/magiclane-maps-sdk-ios
    ```
 4. Select **"Up to Next Major Version"** with version **2.1.3**
 5. Click **Add Package**
