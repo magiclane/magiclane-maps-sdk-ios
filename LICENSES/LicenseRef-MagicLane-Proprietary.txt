@@ -1,4 +1,4 @@
-Copyright (C) 1995-2025 Magic Lane International B.V. <info@magiclane.com>
+Copyright (C) 2025-2026 Magic Lane International B.V. <info@magiclane.com>
 
 The software and its associated files (collectively, the "Software") are licensed under the Magic Lane Terms of Service (TOS)
 for use exclusively by developers with a current active Magic Lane account. Any violation of the TOS or account termination

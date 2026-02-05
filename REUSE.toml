@@ -7,5 +7,5 @@ SPDX-PackageComment = "Get the binary frameworks of the MagicLane Maps SDK for i
 [[annotations]]
 path = "**"
 precedence = "aggregate"
-SPDX-FileCopyrightText = "1995-2025 Magic Lane International B.V. <info@magiclane.com>"
+SPDX-FileCopyrightText = "2025-2026 Magic Lane International B.V. <info@magiclane.com>"
 SPDX-License-Identifier = "LicenseRef-MagicLane-Proprietary"

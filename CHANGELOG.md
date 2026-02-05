@@ -8,6 +8,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 >
 > Due to improvements of our SDK and map data, we kindly ask you to update your applications and projects with any SDK revision released starting with October 2024 in order to continue using the online Magic Earth map-related services and to continue receiving map updates.
 
+## [2.1.4] - [7.1.26.06.08D3106B] - 2026-02-05
+### Added
+
+- New class available: `DriverBehaviourAnalysisObject`, `DriverBehaviourContext`, `DrivingScoresObject`, `LandmarkAlarmsListObject`, `OverlayItemAlarmsListObject`, `MappedDrivingEventObject`.
+  
+- New method available in `AlarmContext.h`:
+
+  `(nullable LandmarkStoreContextCollection *)getLandmarkStoreCollection`
+  
+  `(nullable OverlayMutableCollectionObject *)geOverlayMutableCollection`
+  
+  `(nullable LandmarkAlarmsListObject *)getLandmarkAlarmsObject`
+  
+  `(nullable OverlayItemAlarmsListObject *)getOverlayItemAlarmsObject`
+
+- New method available in `LandmarkPositionObject.h`:
+
+  `(int)getDeviation`
+
+- New method available in `MapViewController.h`:
+
+  `(void)setNavigationRouteUpdateRate:(RouteUpdateRate)rate`
+
+  `(RouteUpdateRate)getNavigationRouteUpdateRate`
+
+- New method available in `OverlayItemPositionObject.h`:
+
+  `(int)getDeviation`
+  
+- New method available in `RouteTrafficEventObject.h`:
+
+  `(BOOL)isInsideTrafficEventOnDistance:(unsigned int)distance`
+
 ## [2.1.3] - [7.1.25.42.ECFEC713] - 2025-11-19
 ### Removed
 

@@ -25,7 +25,7 @@ The [Magic Lane Studio](https://developer.magiclane.com/studio) can be used to m
    ```
    https://github.com/magiclane/magiclane-maps-sdk-ios
    ```
-4. Select **"Up to Next Major Version"** with version **2.1.3**
+4. Select **"Up to Next Major Version"** with version **2.1.4**
 5. Click **Add Package**
 6. Select your target and click **Add Package** again
 
@@ -35,7 +35,7 @@ Comprehensive API documentation is available as a DocC archive. The documentatio
 
 ### Downloading Documentation
 
-**Current Version (2.1.3)**: [Download GEMKit.doccarchive.zip](https://developer.magiclane.com/packages/ios/2.1.3/GEMKit.doccarchive.zip)
+**Current Version (2.1.4)**: [Download GEMKit.doccarchive.zip](https://developer.magiclane.com/packages/ios/2.1.4/GEMKit.doccarchive.zip)
 
 ### Viewing Documentation in Xcode
 
@@ -57,7 +57,7 @@ Thank you for using the SDK.
 
 ## License
 
-Copyright (C) 1995-2025 Magic Lane International B.V. <info@magiclane.com>
+Copyright (C) 2025-2026 Magic Lane International B.V. <info@magiclane.com>
 
 See the [LICENSE](LICENSES/LicenseRef-MagicLane-Proprietary.txt) for copyright and license information. 
 Please review the terms and conditions before using this software in your projects.
