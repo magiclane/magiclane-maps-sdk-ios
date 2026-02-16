@@ -8,6 +8,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 >
 > Due to improvements of our SDK and map data, we kindly ask you to update your applications and projects with any SDK revision released starting with October 2024 in order to continue using the online Magic Earth map-related services and to continue receiving map updates.
 
+## [2.1.5] - [7.1.26.08.15261FA5] - 2026-02-16
+### ⚠️ Breaking Change
+
+- In `NavigationContextDelegate`: The following optional delegate method signature now allows a nullable route parameter:
+
+  `(void)navigationContext:(nonnull NavigationContext *)navigationContext route:(nullable RouteObject *)route navigationError:(NSInteger)code`
+
+### Added
+
+- New method available in `ActivationContext.h`:
+
+  `(void)onUsageDetected`
+  
+  `(void)onAppTokenRejected:(nonnull NSString*)token`
+  
+  `(void)setUseGPSTimeForActivation:(BOOL)useGpsTime`
+  
+  `(void)setMandatoryGPSTimeForActivation:(BOOL)mandatoryGpsTime`
+
+- New method available in `MapsContext.h`:
+
+  `(void)updateWithAllowCellularNetwork:(BOOL)allow canUpdateBeAppliedHandler:(nonnull BOOL(^)(void))canUpdateBeAppliedHandler completionHandler:(nonnull void(^)(BOOL success))handler`
+  
+  `(BOOL)canApplyUpdate`
+  
+  `(void)applyUpdate`
+
+- New method available in `MapStyleContext.h`:
+
+  `(void)updateWithAllowCellularNetwork:(BOOL)allow canUpdateBeAppliedHandler:(nonnull BOOL(^)(void))canUpdateBeAppliedHandler completionHandler:(nonnull void(^)(BOOL success))handler`
+  
+  `(BOOL)canApplyUpdate`
+  
+  `(void)applyUpdate`
+
 ## [2.1.4] - [7.1.26.06.08D3106B] - 2026-02-05
 ### Added
 
