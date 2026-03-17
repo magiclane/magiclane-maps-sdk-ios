@@ -8,7 +8,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 >
 > Due to improvements of our SDK and map data, we kindly ask you to update your applications and projects with any SDK revision released starting with October 2024 in order to continue using the online Magic Earth map-related services and to continue receiving map updates.
 
-## [2.1.5] - [7.1.26.08.15261FA5] - 2026-02-16
+## [2.1.6] - 2026-03-17
+
+**Build:** 7.1.26.12.226F2080
+
+### Added
+
+- New method available in `ActivationContext.h`:
+
+  `(BOOL)isSupported`
+
+- New method available in `GEMSdk.h`:
+
+  `(BOOL)initCoreSdk:(nonnull NSString *)authorizationKey appVariant:(int)appVariant`
+
+  `(SDKErrorCode)initCoreSdk:(nonnull NSString *)authorizationKey language:(nonnull NSString *)language appVariant:(int)appVariant completionHandler:( void(^)(SDKErrorCode) )handler`
+
+  `(SDKErrorCode)initCoreSdk:(nonnull NSString *)authorizationKey appVariant:(int)appVariant activationExceptionHandler:(void(^)(int error, NSString *details))activationExceptionHandler`
+
+
+## [2.1.5] - 2026-02-16
+
+**Build:** 7.1.26.08.15261FA5
+
 ### ⚠️ Breaking Change
 
 - In `NavigationContextDelegate`: The following optional delegate method signature now allows a nullable route parameter:
@@ -43,7 +65,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   
   `(void)applyUpdate`
 
-## [2.1.4] - [7.1.26.06.08D3106B] - 2026-02-05
+
+## [2.1.4] - 2026-02-05
+
+**Build:** 7.1.26.06.08D3106B
+
 ### Added
 
 - New class available: `DriverBehaviourAnalysisObject`, `DriverBehaviourContext`, `DrivingScoresObject`, `LandmarkAlarmsListObject`, `OverlayItemAlarmsListObject`, `MappedDrivingEventObject`.
@@ -76,10 +102,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
   `(BOOL)isInsideTrafficEventOnDistance:(unsigned int)distance`
 
-## [2.1.3] - [7.1.25.42.ECFEC713] - 2025-11-19
-### Removed
+## [2.1.3] - 2025-11-19
 
-- Removed deprecated API in `AlarmContextDelegate`, `MarkerCollectionObjectRenderSettings`, `RoutePreferencesObject.h`. 
+**Build:** 7.1.25.42.ECFEC713
 
 ### Added
 
@@ -111,17 +136,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
   `(void)setUseTtsWithLanguage:(nonnull NSString *)language identifier:(nonnull NSString *)identifier completionHandler:(nonnull void(^)(BOOL success))handler`
 
-## [2.1.2] - [7.1.25.42.DB834EFB] - 2025-10-17
+### Removed
+
+- Removed deprecated API in `AlarmContextDelegate`, `MarkerCollectionObjectRenderSettings`, `RoutePreferencesObject.h`. 
+
+## [2.1.2] - 2025-10-17
+
+**Build:** 7.1.25.42.DB834EFB
+
 ### Fixed
- 
+
 - Fix related to route simulation
 
-## [2.1.1] - [7.1.25.42.613D87EA] - 2025-10-16
+## [2.1.1] - 2025-10-16
+
+**Build:** 7.1.25.42.613D87EA
+
 ### Added
 
 - New class available: `LogBookmarksContext`, `LogUploadContext`, `LogUploadDelegate`, `LogUploadHeader`, `LogImageObject`, `RecorderContext`, `RecorderContextDelegate`, `RecorderHeader`, `RecorderConfigurationObject`.
 
-## [2.1.0] - [7.1.25.42.DB834EFB] - 2025-10-14
+## [2.1.0] - 2025-10-14
+
+**Build:** 7.1.25.42.DB834EFB
+
 ### Added
 
 - New class available: `ActivationContext`, `ActivationInfoObject`, `LandmarkBrowseSessionSettingsObject`, `ManeuverCarPlayObject`, `MarkerCollectionRenderSettingsObject`, `PushNotificationContext`, `SignpostItemObject`.
