@@ -8,6 +8,247 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 >
 > Due to improvements of our SDK and map data, we kindly ask you to update your applications and projects with any SDK revision released starting with October 2024 in order to continue using the online Magic Earth map-related services and to continue receiving map updates.
 
+## [2.1.7] - 2026-05-21
+
+**Build:** 7.1.26.21.949F3DD8
+
+### ⚠️ Breaking Change
+
+- In `MarkerCollectionObject.h`: the marker identifier parameter is widened to `NSInteger`.
+
+  `(nullable MarkerObject *)getMarkerById:(NSInteger)identifier`
+
+### Changed
+
+- In `GEMSdk.h`: the following init variants are deprecated in favor of `initSdkWithParameters:completionHandler:` and the new `exceptions:`-suffixed selectors.
+
+  `(BOOL)initSdk:(nonnull NSString *)authorizationKey`
+
+  `(SDKErrorCode)initSdk:(nonnull NSString *)authorizationKey language:(nonnull NSString *)language completionHandler:(void(^)(SDKErrorCode))handler`
+
+  `(BOOL)initCoreSdk:(nonnull NSString *)authorizationKey appVariant:(int)appVariant`
+
+  `(SDKErrorCode)initCoreSdk:(nonnull NSString *)authorizationKey language:(nonnull NSString *)language appVariant:(int)appVariant completionHandler:(void(^)(SDKErrorCode))handler`
+
+  `(SDKErrorCode)initCoreSdk:(nonnull NSString *)authorizationKey appVariant:(int)appVariant activationExceptionHandler:(void(^)(int error, NSString *details))activationExceptionHandler`
+
+- In `NavigationContextDelegate.h`: replaced by the `branchingCoords:`-bearing overload below.
+
+  `(void)navigationContext:(nonnull NavigationContext *)navigationContext onBetterRouteDetected:(nonnull RouteObject *)route travelTime:(NSInteger)travelTime delay:(NSInteger)delay timeGain:(NSInteger)timeGain`
+
+- In `MapViewController.h`: the toggles are no-ops scheduled for removal.
+
+  `(void)showMapLogo`
+
+  `(void)hideMapLogo`
+
+### Added
+
+- New class available: `CarProfileDetailsObject`, `GEMSdkParameters`, `MapDownloaderContext`, `RestrictionSectionObject`, `TollSectionObject`.
+
+- New protocol available: `GEMSdkExceptions` (`GEMSdkExceptions.h`).
+
+- New enums available:
+
+  `ActivationAboutToExpireType` in `GenericHeader.h` (`NotSpecified`, `ActivationToken`, `ActivationTokenInEvaluationSdk`, `MissingOnlineConnectivity`, `OnDemandActivation`).
+
+  `MapWatermarkPosition` in `MapViewHeader.h` (`Left`, `Right`, `Top`, `Bottom`, `Center`, `TopLeft`, `TopRight`, `BottomLeft`, `BottomRight`).
+
+  `RoundtripRangeType` in `RoutePreferencesObject.h` (`Default`, `DistanceBased`, `TimeBased`, `EnergyBased`).
+
+  `RouteRestrictionType` in `RestrictionSectionObject.h` (`TransportNotAllowed`, `AccessRestricted`, `AvoidPreferences`, `VehicleWeight`, `VehicleHeight`, `VehicleLength`, `VehicleWidth`, `VehicleAxleLoad`, `VehiclePlate`).
+
+  `FuelType` in `CarProfileDetailsObject.h` (`Petrol`, `Diesel`, `LPG`, `Electric`).
+
+- New cases added to `LandmarkStoreType` in `LandmarkStoreContext.h`: `MapRoads`, `Overlays`, `Geofence`.
+
+- New case added to `IntentHandlerType` in `IntentsContext.h`: `NavigateTo`.
+
+- ~120 new cases added to `LocalizationStringId` in `LocalizationHeader.h` (error messages, landmark categories, navigation messages, subscription / activation, generic UI strings).
+
+- New method available in `GEMSdk.h`:
+
+  `(SDKErrorCode)initSdkWithParameters:(nonnull GEMSdkParameters *)parameters completionHandler:(void(^)(SDKErrorCode error))handler`
+
+  `(SDKErrorCode)initSdk:(nonnull NSString *)authorizationKey language:(nullable NSString *)language appVariant:(int)appVariant exceptions:(nonnull id<GEMSdkExceptions>)delegate completionHandler:(void(^)(SDKErrorCode))handler`
+
+  `(SDKErrorCode)initCoreSdk:(nonnull NSString *)authorizationKey language:(nullable NSString *)language appVariant:(int)appVariant exceptions:(nonnull id<GEMSdkExceptions>)delegate completionHandler:(void(^)(SDKErrorCode))handler`
+
+- New method available in `GEMSdkParameters.h`:
+
+  `(instancetype)initWithExceptions:(nonnull id<GEMSdkExceptions>)exceptions`
+
+  `@property (nonatomic, weak, readonly) id<GEMSdkExceptions> exceptions`
+
+  `@property (nonatomic) int appVariant`
+
+  `@property (nonatomic, copy, nullable) NSString *activationToken`
+
+  `@property (nonatomic, copy, nullable) NSString *language`
+
+  `@property (nonatomic, copy, nullable) NSString *ttsLanguage`
+
+  `@property (nonatomic, assign) BOOL initCoreOnly`
+
+- New method available in `GEMSdkExceptions.h` (protocol):
+
+  `(void)onSdkActivationDetails:(ActivationAboutToExpireType)reason remainingTime:(NSInteger)remainingTimeInSeconds`
+
+  `(void)onActivationMandatory:(nonnull NSString *)message`
+
+  `(void)onBreakpadDumpSuccess`
+
+  `(void)onBreakpadDumpFailure`
+
+  `(BOOL)onCorruptedContentDetection:(nullable ContentStoreObject *)item path:(nonnull NSString *)path details:(nonnull NSString *)details`
+
+- New method available in `MapDownloaderContext.h`:
+
+  `+ (nonnull MapDownloaderContext *)shared`
+
+  `(int)getMaxSquareKm`
+
+  `(void)setMaxSquareKm:(int)maxSquareKm`
+
+  `(SDKErrorCode)startDownload:(nonnull NSArray <RectangleGeographicAreaObject *> *)areas completionHandler:(nonnull void(^)(SDKErrorCode code))handler`
+
+  `(void)cancelDownload`
+
+  `(nullable TransferStatisticsContext *)getTransferStatistics`
+
+- New method available in `MapViewController.h`:
+
+  `(nonnull NSArray<MarkerCollectionObject *> *)getMarkerCollectionFromGeoJson:(nonnull NSString *)path filters:(nullable NSArray<NSString *> *)filters prefix:(nullable NSString *)prefix importPolygonAsArea:(BOOL)importPolygonAsArea code:(nullable SDKErrorCode *)code`
+
+  `(nonnull NSArray<LandmarkObject *> *)getNearestLocations:(nonnull CoordinatesObject *)coordinates types:(nonnull NSArray<NSNumber *> *)types radius:(int)radius`
+
+  `(void)setWatermarkText:(nonnull NSString *)line1 line2:(nonnull NSString *)line2 position:(MapWatermarkPosition)position`
+
+  `(void)setWatermarkLogoProperties:(MapWatermarkPosition)position`
+
+  `(void)centerOnRoute:(RouteObject *)route startDist:(int)startDist endDist:(int)endDist animationDuration:(NSTimeInterval)duration`
+
+  `(BOOL)removePathAt:(int)index`
+
+  `(BOOL)removePath:(nonnull PathObject *)object`
+
+- New properties available in `MarkerCollectionRenderSettingsObject.h`:
+
+  `@property (nonatomic, strong, nullable) UIImage *lowDensityPointsGroupImage`
+
+  `@property (nonatomic, strong, nullable) NSNumber *lowDensityPointsGroupMaxCount`
+
+  `@property (nonatomic, strong, nullable) UIImage *mediumDensityPointsGroupImage`
+
+  `@property (nonatomic, strong, nullable) NSNumber *mediumDensityPointsGroupMaxCount`
+
+  `@property (nonatomic, strong, nullable) UIImage *highDensityPointsGroupImage`
+
+- New method available in `RouteObject.h`:
+
+  `(NSInteger)getId`
+
+  `(nonnull NSArray<TollSectionObject *> *)getTollSections`
+
+  `(nonnull NSArray<RestrictionSectionObject *> *)getRestrictionSections`
+
+  `(nonnull NSArray<LandmarkObject *> *)getWaypointsVia:(nonnull LandmarkObject *)viaWpt`
+
+  `(nullable PolygonGeographicAreaObject *)getPolygonGeographicArea`
+
+  `(nullable NSData *)exportTrafficAs:(PathFileFormat)format`
+
+- New method available in `RoutePreferencesObject.h`:
+
+  `(void)setRoundtripParametersWithRange:(unsigned int)range rangeType:(RoundtripRangeType)rangeType randomSeed:(unsigned int)randomSeed`
+
+  `(unsigned int)getRoundtripRange`
+
+  `(RoundtripRangeType)getRoundtripRangeType`
+
+  `(unsigned int)getRoundtripRandomSeed`
+
+  `(void)setAutomaticTimestamp`
+
+  `(BOOL)isAutomaticTimestamp`
+
+  `(void)setAvoidGeofenceAntiAreas:(nonnull NSArray<NSString *> *)areas`
+
+  `(nonnull NSArray<NSString *> *)getAvoidGeofenceAntiAreas`
+
+  `(float)getBuildTerrainProfileMinVariation`
+
+  `(BOOL)getImmutableRoadblockAvoidance`
+
+  `(void)setImmutableRoadblockAvoidance:(BOOL)state`
+
+  `(nonnull CarProfileDetailsObject *)getCarProfile`
+
+  `(void)setCarProfile:(nonnull CarProfileDetailsObject *)profile`
+
+- New method available in `NavigationContextDelegate.h`:
+
+  `(void)navigationContext:(nonnull NavigationContext *)navigationContext onBetterRouteDetected:(nonnull RouteObject *)route branchingCoords:(nonnull CoordinatesObject *)branchingCoords travelTime:(NSInteger)travelTime delay:(NSInteger)delay timeGain:(NSInteger)timeGain`
+
+- New method available in `RectangleGeographicAreaObject.h`:
+
+  `(instancetype)initWithMinLatitude:(double)minLat maxLatitude:(double)maxLat minLon:(double)minLon maxLon:(double)maxLon`
+
+  `(instancetype)initWithTopLeftLocation:(nonnull CoordinatesObject *)coords1 bottomRightLocation:(nonnull CoordinatesObject *)coords2`
+
+- New method available in `ImageDatabaseObject.h`:
+
+  `(nullable ImageObject *)getTollImage`
+
+- New method available in `PathCollectionObject.h`:
+
+  `(int)getPathIndexByName:(nonnull NSString *)name`
+
+- New method available in `PTRouteSegmentObject.h`:
+
+  `(BOOL)isStationWalk`
+
+- New method available in `TollSectionObject.h`:
+
+  `(void)setStartDistance:(int)distance`
+
+  `(int)getStartDistance`
+
+  `(void)setEndDistance:(int)distance`
+
+  `(int)getEndDistance`
+
+  `(void)setCost:(double)cost`
+
+  `(double)getCost`
+
+  `(void)setCurrency:(nonnull NSString *)currency`
+
+  `(nonnull NSString *)getCurrency`
+
+- New method available in `RestrictionSectionObject.h`:
+
+  `(void)setStartDistance:(int)distance`
+
+  `(int)getStartDistance`
+
+  `(void)setEndDistance:(int)distance`
+
+  `(int)getEndDistance`
+
+  `(void)setRestrictions:(RouteRestrictionType)restrictions`
+
+  `(RouteRestrictionType)getRestrictions`
+
+- New properties available in `CarProfileDetailsObject.h`:
+
+  `@property (nonatomic, assign) FuelType fuel`
+
+  `@property (nonatomic, assign) int mass`
+
+  `@property (nonatomic, assign) double maxSpeed`
+
+
 ## [2.1.6] - 2026-03-17
 
 **Build:** 7.1.26.12.226F2080
