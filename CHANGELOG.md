@@ -8,6 +8,73 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 >
 > Due to improvements of our SDK and map data, we kindly ask you to update your applications and projects with any SDK revision released starting with October 2024 in order to continue using the online Magic Earth map-related services and to continue receiving map updates.
 
+## [2.2.0] - 2026-06-02
+
+**Build:** 7.1.26.23.4ABC1C02
+
+### Added
+
+- New class available: `MarkerMatchObject`, `TilesCollectionGeographicAreaObject`.
+
+- New enum available:
+
+  `MarkerMatchType` in `MarkerMatchObject.h` (`None`, `Coordinate`, `CoordinateGroup`, `Contour`, `Inside`).
+
+- New method available in `ImageObject.h`:
+
+  `(nullable NSData *)exportImage:(CGSize)size format:(ImageFormat)format`
+
+- New method available in `LandmarkCategoryObject.h`:
+
+  `(nullable ImageObject*)getImage`
+
+- New method available in `MapsContext.h`:
+
+  `(void)getOnlineListWithCountries:(nullable NSArray<NSString *> *)countries area:(nullable GeographicAreaObject *)area completionHandler:(nonnull void(^)(NSArray<ContentStoreObject *> *array))handler`
+
+- New method available in `MarkerMatchObject.h`:
+
+  `(nullable MarkerObject *)getMarker`
+
+  `(nullable MarkerCollectionObject *)getMarkerCollection`
+
+  `(int)getMarkerIndex`
+
+  `(int)getPartIndex`
+
+  `(int)getSegment`
+
+  `(MarkerMatchType)getType`
+
+  `(int)getDistance`
+
+  `(nullable CoordinatesObject *)getCoordinates`
+
+- New method available in `MapViewControllerDelegate.h` (protocol):
+
+  `(BOOL)shouldSelectMarkers:(nonnull MapViewController *)mapViewController`
+
+  `(void)mapViewController:(nonnull MapViewController *)mapViewController didSelectMarkers:(nonnull NSArray<MarkerMatchObject *> *)markers`
+
+  `(void)mapViewController:(nonnull MapViewController *)mapViewController didSelectMarkers:(nonnull NSArray<MarkerMatchObject *> *)markers onTouchPoint:(CGPoint)point`
+
+  `(void)mapViewController:(nonnull MapViewController *)mapViewController didSelectMarkers:(nonnull NSArray<MarkerMatchObject *> *)markers onLongTouchPoint:(CGPoint)point`
+
+- New method available in `RouteObject.h`:
+
+  `(nullable TilesCollectionGeographicAreaObject *)getTilesGeographicArea`
+
+- New method available in `GEMKit.MapBase`:
+
+  `func didSelectMarkers(_ action: @escaping (_ markers: [GEMKit.MarkerMatchObject], _ touchPoint: CoreFoundation.CGPoint, _ isLongTouch: Swift.Bool) -> Swift.Void) -> GEMKit.MapBase`
+
+- New method available in `GEMKit.MapCoordinator`:
+
+  `func mapViewController(_ mapViewController: GEMKit.MapViewController, didSelectMarkers markers: [GEMKit.MarkerMatchObject], onTouch point: CoreFoundation.CGPoint)`
+
+  `func mapViewController(_ mapViewController: GEMKit.MapViewController, didSelectMarkers markers: [GEMKit.MarkerMatchObject], onLongTouch point: CoreFoundation.CGPoint)`
+
+
 ## [2.1.7] - 2026-05-21
 
 **Build:** 7.1.26.21.949F3DD8
