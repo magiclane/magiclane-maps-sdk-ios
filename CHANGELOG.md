@@ -8,6 +8,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 >
 > Due to improvements of our SDK and map data, we kindly ask you to update your applications and projects with any SDK revision released starting with October 2024 in order to continue using the online Magic Earth map-related services and to continue receiving map updates.
 
+## [2.2.1] - 2026-06-10
+
+**Build:** 7.1.26.24.224B8446
+
+### Added
+
+- New class available: `ActivityFileObject`, `ActivityObject`, `ActivityStoreContext`.
+
+- New method available in `RecorderConfigurationObject.h`:
+
+  `(instancetype)initWithFitnessPresetFolderPath:(nonnull NSString*)folderPath context:(nonnull DataSourceContext *)context transportMode:(RecordingTransportMode)transportMode`
+
+  `(void)setTransportMode:(RecordingTransportMode)type`
+
+
 ## [2.2.0] - 2026-06-02
 
 **Build:** 7.1.26.23.4ABC1C02
