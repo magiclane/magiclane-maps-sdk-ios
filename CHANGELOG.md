@@ -8,6 +8,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 >
 > Due to improvements of our SDK and map data, we kindly ask you to update your applications and projects with any SDK revision released starting with October 2024 in order to continue using the online Magic Earth map-related services and to continue receiving map updates.
 
+## [2.2.2] - 2026-06-25
+
+**Build:** 7.1.26.26.33361A23
+
+### Added
+
+- New class available: `MarkerRenderSettingsObject`.
+
+- New property available in `MarkerCollectionRenderSettingsObject.h`:
+
+  `@property (nonatomic, copy, nullable) MarkerCustomRenderSettingsProvider customMarkerSettings`
+
+- New method available in `RecorderConfigurationObject.h`:
+
+  `(instancetype)initWithDiagnosticPresetFolderPath:(nonnull NSString*)folderPath context:(nonnull DataSourceContext *)context transportMode:(RecordingTransportMode)transportMode`
+
+- New SwiftUI struct available: `GEMKit.MapRouteConfiguration`.
+
+- New method available in `GEMKit.MapRoute`:
+
+  `init(configuration: GEMKit.MapRouteConfiguration)`
+
+
 ## [2.2.1] - 2026-06-10
 
 **Build:** 7.1.26.24.224B8446
