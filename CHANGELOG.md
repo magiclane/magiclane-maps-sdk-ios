@@ -8,6 +8,83 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 >
 > Due to improvements of our SDK and map data, we kindly ask you to update your applications and projects with any SDK revision released starting with October 2024 in order to continue using the online Magic Earth map-related services and to continue receiving map updates.
 
+## [2.2.3] - 2026-07-16
+
+**Build:** 7.1.26.29.4D19B137
+
+### Added
+
+- New class available: `WeatherContextWarning`.
+
+- New property available in `WeatherContextForecast.h`:
+
+  `@property(nonatomic, strong) NSArray <WeatherContextWarning *> *warnings`
+
+- New property available in `WeatherContextWarning.h`:
+
+  `@property(nonnull, nonatomic, strong) NSArray <MarkerObject *> *coverage`
+
+- New enum available in `GenericHeader.h`: `WeatherCoverageGeometry`.
+
+- New methods available in `WeatherContext.h`:
+
+  `(SDKErrorCode)requestCurrentForecast:(nonnull NSArray <CoordinatesObject *> *)coordinates coverageGeometry:(WeatherCoverageGeometry)coverageGeometry completionHandler:(nonnull void(^)(SDKErrorCode code, NSArray<WeatherContextForecast *> *array))handler`
+
+  `(SDKErrorCode)requestForecast:(nonnull NSArray <TimeDistanceCoordinatesObject *> *)timeDistanceCoordinates coverageGeometry:(WeatherCoverageGeometry)coverageGeometry completionHandler:(nonnull void(^)(SDKErrorCode code, NSArray< NSArray<WeatherContextForecast *> *> *array))handler`
+
+- New enum available in `RouteObject.h`: `RouteUpdateDetails`.
+
+- New method available in `NavigationContextDelegate.h`:
+
+  `(void)navigationContext:(nonnull NavigationContext *)navigationContext navigationRouteUpdated:(nonnull RouteObject*)route updateDetails:(int)updateDetails`
+
+- New methods available in `TrafficEventObject.h`:
+
+  `(BOOL)isAntiArea`
+
+  `(void)getPreviewData:(nonnull void(^)(NSArray<NSDictionary *> * _Nullable params))handler`
+
+  `(void)cancelGetPreviewData`
+
+- New methods available in `GEMKit.MapBase`:
+
+  `func mapMinZoomLevel(_ level: Int) -> Self`
+
+  `func mapMaxZoomLevel(_ level: Int) -> Self`
+
+  `func mapMinViewAngle(_ angle: Double) -> Self`
+
+  `func mapMaxViewAngle(_ angle: Double) -> Self`
+
+- New methods available in `MapViewPreferencesContext.h`:
+
+  `(void)setMinViewAngle:(double)value`
+
+  `(void)setMaxViewAngle:(double)value`
+
+  `(NSString *)getMapStylePath`
+
+  `(void)updateCurrentStyleFromJson:(NSData *)data`
+
+  `(BOOL)isNorthFixed`
+
+  `(void)setNorthFixed:(BOOL)value`
+
+  `(BOOL)isFastBrowsingEnabled`
+
+  `(void)enableFastBrowsingMode:(BOOL)enable`
+
+- New class available: `MapSceneObject`.
+
+- New methods available in `MapViewPreferencesContext.h`:
+
+  `(BOOL)isSceneObjectVisible:(MapSceneObject *)object`
+
+  `(void)setSceneObjectVisibility:(MapSceneObject *)object visible:(BOOL)visible`
+
+  `(void)setSceneObjectScaleFactor:(MapSceneObject *)object scaleFactor:(float)factor`
+
+
 ## [2.2.2] - 2026-06-25
 
 **Build:** 7.1.26.26.33361A23
