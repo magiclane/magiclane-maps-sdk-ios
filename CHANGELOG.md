@@ -8,6 +8,83 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 >
 > Due to improvements of our SDK and map data, we kindly ask you to update your applications and projects with any SDK revision released starting with October 2024 in order to continue using the online Magic Earth map-related services and to continue receiving map updates.
 
+## [2.2.4] - 2026-08-27
+
+**Build:** 7.1.26.35.4C6D6199
+
+### Added
+
+- New method available in `MapViewController.h`:
+
+  `(void)addRoutes:(nonnull NSArray<RouteObject *> *)array routeRenderSettings:(nullable MapViewRouteRenderSettings *)routeRenderSettings withTraffic:(nullable TrafficContext *)trafficContext showSummary:(BOOL)summary`
+
+- New classes available: `FerrySectionObject`, `CountrySectionObject`.
+
+- New enum available in `FerrySectionObject.h`: `FerryType` (`Boat`, `TrainShuttle`).
+
+- New methods available in `FerrySectionObject.h`:
+
+  `(void)setStartDistance:(int)distance`
+
+  `(int)getStartDistance`
+
+  `(void)setEndDistance:(int)distance`
+
+  `(int)getEndDistance`
+
+  `(void)setType:(FerryType)type`
+
+  `(FerryType)getType`
+
+- New methods available in `CountrySectionObject.h`:
+
+  `(void)setStartDistance:(int)distance`
+
+  `(int)getStartDistance`
+
+  `(void)setCode:(nonnull NSString *)code`
+
+  `(nonnull NSString *)getCode`
+
+  `(void)setName:(nonnull NSString *)name`
+
+  `(nonnull NSString *)getName`
+
+- New methods available in `RouteObject.h`:
+
+  `(nonnull NSArray<FerrySectionObject *> *)getFerrySections`
+
+  `(nonnull NSArray<CountrySectionObject *> *)getCountrySections`
+
+- New methods available in `GEMKit.MapBase`:
+
+  `init(initialPosition: GEMKit.CoordinatesObject? = nil, initialZoomLevel: Swift.Int? = nil, initialRenderSize: CoreFoundation.CGSize? = nil)`
+
+  `init(initialPosition: GEMKit.CoordinatesObject? = nil, initialZoomLevel: Swift.Int? = nil, initialRenderSize: CoreFoundation.CGSize? = nil, content: @escaping () -> any GEMKit.MapContent)`
+
+  `func onMapCreated(_ action: @escaping (_ mapViewController: GEMKit.MapViewController) -> Swift.Void) -> GEMKit.MapBase`
+
+- New enum cases available in `MapViewHeader.h` for `MapViewRouteRenderOption`: `MapViewRouteRenderOptionShowDirectionArrows`, `MapViewRouteRenderOptionShadow`, `MapViewRouteRenderOptionShowWaypointBridges`.
+
+- New properties available in `MapViewRouteRenderSettings.h`:
+
+  `@property(nonatomic, strong) UIColor *waypointBridgeInnerColor`
+
+  `@property(nonatomic, strong) UIColor *waypointBridgeOuterColor`
+
+  `@property(nonatomic, assign) double waypointBridgeInnerSize`
+
+  `@property(nonatomic, assign) double waypointBridgeOuterSize`
+
+  `@property(nonatomic, assign) RouteLineType waypointBridgeLineType`
+
+- New enum case available in `HighlightRenderSettings.h` for `HighlightOption`: `HighlightOptionShadow`.
+
+- New method available in `GEMSdk.h`:
+
+  `(void)generateGPSLog:(BOOL)generate`
+
+
 ## [2.2.3] - 2026-07-16
 
 **Build:** 7.1.26.29.4D19B137
