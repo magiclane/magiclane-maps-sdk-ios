@@ -8,6 +8,88 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 >
 > Due to improvements of our SDK and map data, we kindly ask you to update your applications and projects with any SDK revision released starting with October 2024 in order to continue using the online Magic Earth map-related services and to continue receiving map updates.
 
+## [2.2.5] - 2026-09-11
+
+**Build:** 7.1.26.37.468C09A4
+
+### ⚠️ Breaking Change
+
+- In `TrafficEventObject.h`:
+
+  `(void)getPreviewData:(nonnull void(^)(NSArray<NSDictionary *> * _Nullable params))handler` is now
+  `(SDKErrorCode)getPreviewData:(nonnull void(^)(NSArray<NSDictionary *> * _Nullable params))handler`
+
+- Misspelled selectors have been renamed. The old names are gone, update the call sites.
+
+- In `SearchContext.h`:
+
+  `(nullable OverlayMutableCollectionObject *)geOverlayMutableCollection` is now `(nullable OverlayMutableCollectionObject *)getOverlayMutableCollection`
+
+- In `LandmarkObject.h`:
+
+  `(nullable RectangleGeographicAreaObject *)getContourGeograficArea` is now `(nullable RectangleGeographicAreaObject *)getContourGeographicArea`
+
+  `(BOOL)isContourGeograficAreaEmpty` is now `(BOOL)isContourGeographicAreaEmpty`
+
+- In `RouteObject.h` and `NavigationInstructionObject.h`:
+
+  `(nullable NSData *)exportAs:(PathFileFormat)format withCompresion:(BOOL)compressed` is now `(nullable NSData *)exportAs:(PathFileFormat)format withCompression:(BOOL)compressed`
+
+- In `ExceptionHandler.h`:
+
+  `(GEMExceptionHandler*)sharedInstace` is now `(GEMExceptionHandler*)sharedInstance`
+
+### Added
+
+- New search methods available in `SearchContext.h`:
+
+  `(void)searchAlongWithPath:(nonnull PathObject*)path query:(nonnull NSString*)query completionHandler:(nonnull void(^)(NSArray<LandmarkObject *> *array))handler`
+
+  `(void)searchInArea:(nonnull GeographicAreaObject *)area location:(nonnull CoordinatesObject *)location query:(nonnull NSString*)query completionHandler:(nonnull void(^)(NSArray<LandmarkObject *> *array))handler`
+
+  `(void)searchDetailsWithLandmarks:(nonnull NSArray<LandmarkObject *> *)landmarks completionHandler:(nonnull void(^)(NSArray<LandmarkObject *> *array))handler`
+
+  `(void)cancelSearchDetails`
+
+- `searchAlongWithPath:query:completionHandler:` searches the corridor around any path geometry. Unlike `searchAlongWithRoute:query:completionHandler:` a path carries no travel direction, so results are returned for the whole corridor.
+
+- `searchInArea:location:query:completionHandler:` searches inside any geographic area - rectangle, circle, polygon or tiles collection - with results ranked by relevance to the given reference location.
+
+- `searchDetailsWithLandmarks:completionHandler:` fills in the fields a list search leaves out. It runs as its own request, so it does not cancel a search in progress, and it is cancelled with `cancelSearchDetails`. Landmarks that already carry their details are returned unchanged.
+
+- New search preference methods available in `SearchContext.h`:
+
+  `(int)getMaxMatches`
+
+  `(BOOL)isExactMatchEnabled`
+
+  `(BOOL)isSearchAddressesEnabled`
+
+  `(BOOL)isSearchGeofencesEnabled`
+
+  `(BOOL)isSearchMapPOIsEnabled`
+
+  `(void)setThresholdHeading:(int)threshold`
+
+  `(int)getThresholdHeading`
+
+- New address search methods available in `SearchContext.h`:
+
+  `(AddressLevelType)getAddressDetailLevelWithLandmark:(nonnull LandmarkObject *)landmark`
+
+  `(nonnull NSArray <NSNumber *> *)getNextAddressDetailLevelWithLandmark:(nonnull LandmarkObject *)landmark`
+
+  `(void)setAddressSearchAllowFuzzyResults:(BOOL)state`
+
+  `(BOOL)getAddressSearchAllowFuzzyResults`
+
+- New statistics methods available in `SearchContext.h`:
+
+  `(nonnull TransferStatisticsContext *)getTransferStatistics`
+
+  `(nonnull TransferStatisticsContext *)getAddressSearchTransferStatistics`
+
+
 ## [2.2.4] - 2026-08-27
 
 **Build:** 7.1.26.35.4C6D6199

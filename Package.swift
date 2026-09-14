@@ -18,8 +18,8 @@ let package = Package(
      targets: [
         .binaryTarget(
             name: "GEMKit",
-            url: "https://developer.magiclane.com/packages/ios/2.2.4/GEMKit.xcframework.zip",
-            checksum: "c85937c5c53cf2b16b1f71cfbb8e23ecc54843bbf4f3c012e832ee8db94c7576"
+            url: "https://developer.magiclane.com/packages/ios/2.2.5/GEMKit.xcframework.zip",
+            checksum: "39f5d2f22755c4dfac6059f8996cb7e5417e5a5848115a1cd4902c989f0f74bd"
         )
     ]
 )
