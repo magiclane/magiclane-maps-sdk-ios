@@ -8,6 +8,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 >
 > Due to improvements of our SDK and map data, we kindly ask you to update your applications and projects with any SDK revision released starting with October 2024 in order to continue using the online Magic Earth map-related services and to continue receiving map updates.
 
+## [2.2.6] - 2026-09-16
+
+**Build:** 7.1.26.38.1464B737
+
+### Added
+
+- New methods available in `NavigationContext.h`:
+
+  `(RouteStatus)getRouteStatus`
+
+  `(nullable TimeDistanceObject *)getBetterRouteTimeDistanceToFork`
+
+### Changed
+
+- `NavigationContext` is annotated with `NS_SWIFT_UI_ACTOR`, so Swift imports it as `@MainActor`.
+
+
 ## [2.2.5] - 2026-09-11
 
 **Build:** 7.1.26.37.468C09A4
