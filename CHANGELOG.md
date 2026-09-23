@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.8] - 2026-10-23
+
+**Build:** 7.1.26.39.9850AB13
+
+### Added
+
+- New initializer available in `MapViewController.h`:
+
+  `setWatermarkLogoProperties:(MapWatermarkPosition)position size:(float)size alpha:(float)alpha color:(MapWatermarkLogoColor)color background:(BOOL)background`
+
+
 ## [2.2.7] - 2026-10-23
 
 **Build:** 7.1.26.39.2B406422
