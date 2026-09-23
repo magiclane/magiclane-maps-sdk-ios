@@ -4,9 +4,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-> <svg class="svg-inline--fa fa-info-circle fa-w-16" style="width: 1em; vertical-align: -.125em; padding-right: .225em;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="info-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path></svg> **Breaking Change !**
->
-> Due to improvements of our SDK and map data, we kindly ask you to update your applications and projects with any SDK revision released starting with October 2024 in order to continue using the online Magic Earth map-related services and to continue receiving map updates.
+## [2.2.7] - 2026-10-23
+
+**Build:** 7.1.26.39.2B406422
+
+### Added
+
+- New method available in `LandmarkCategoryObject.h`:
+
+  `(void)setImageObject:(nonnull ImageObject *)object`
+
+- New initializer available in `MapViewController.h`:
+
+  `(instancetype)initWithPpi:(NSInteger)ppi scale:(CGFloat)scale size:(CGSize)size`
+
+  `(double)getSlippyZoomLevel`
+
+  `(double)getMaxSlippyZoomLevel`
+
+  `(void)setSlippyZoomLevel:(double)level point:(CGPoint)point animationDuration:(NSTimeInterval)duration`
+
 
 ## [2.2.6] - 2026-09-16
 
