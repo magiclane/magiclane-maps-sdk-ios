@@ -4,6 +4,141 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.9] - 2026-10-27
+
+**Build:** 7.1.26.44.7F6EC141
+
+### Added
+
+- New methods available in `MapViewPreferencesContext.h`:
+
+  `(SDKErrorCode)setOverlayRenderSettings:(OverlayRenderSettingsObject *)settings overlayId:(int)overlayId`
+
+  `getOverlayRenderSettings:`
+
+  `getOverlayIds`
+
+  `setOverlayExternalRendering:overlayId:`
+
+  `getOverlayExternalRendering:`
+
+  `(SDKErrorCode)addOverlay:(int)overlayId`
+
+  `(SDKErrorCode)removeOverlay:(int)overlayId`
+
+- New enum available in `GenericCategoriesContext.h`: `RoadsideCategoryType`.
+
+- New methods available in `SocialOverlayContext.h`:
+
+  `(int)canReport:(int)prepareId categoryId:(int)categId`
+
+  `getClosureCandidates:categoryId:radius:errorCode:`
+
+  `getClosureCategory:`
+
+  `reportClosure:categoryId:candidateId:description:snapshot:completionHandler:`
+
+  `getClosureCandidatePath:candidateId:errorCode:`
+
+  `parkReport:categoryId:`
+
+  `getParkedReports:`
+
+  `resumeParked:`
+
+  `discardParked:`
+
+  `showClosurePicker:prepareId:categoryId:radius:fitView:`
+
+  `closurePickerTap:point:`
+
+  `selectClosureCandidate:candidateId:`
+
+  `getSelectedClosureCandidate:`
+
+  `hideClosurePicker:`
+
+- New methods available in `AlarmContext.h`:
+
+  `(void)enableSpeedSectionAlarm:(BOOL)enable`
+
+  `(BOOL)isSpeedSectionAlarmEnabled`
+
+  `getSpeedSectionAlarms`
+
+  `getExitedSpeedSectionAlarms`
+
+  `getApproachingSpeedSectionAlarms`
+
+- New delegate methods available in `AlarmContextDelegate.h`:
+
+  `alarmContextOnApproachingSpeedSectionAlarms:`
+
+  `alarmContextOnEnterSpeedSectionAlarms:`
+
+  `alarmContextOnTravelSpeedSectionAlarms:`
+
+  `alarmContextOnExitSpeedSectionAlarms:`
+
+- New properties available in `ActivityVideoPreviewContext.h`:
+
+  `photos`
+
+  `photoHoldSeconds`
+
+  `trackStartDate`
+
+  `trackEndDate`
+
+- New property available in `ActivityVideoFrameInfoObject.h`: `photoIndex`.
+
+- New method available in `ActivityVideoPreviewContext.h`:
+
+  `startLiveWithMapViewController:track:durationSeconds:overlay:progress:completion:`
+
+- New values available in `SignpostItemObjectPictogramType`:
+
+  `SignpostItemObjectPictogramTypeCampSite`
+
+  `SignpostItemObjectPictogramTypeCityCentre`
+
+  `SignpostItemObjectPictogramTypeStadium`
+
+  `SignpostItemObjectPictogramTypeInterchange`
+
+  `SignpostItemObjectPictogramTypeMotorway`
+
+- New methods available in `RoutePreferencesObject.h`:
+
+  `(float)getUnreliableManeuverPenaltyFactor`
+
+  `(void)setUnreliableManeuverPenaltyFactor:(float)factor`
+
+- New method available in `MapDetailsContext.h`:
+
+  `(BOOL)isUnreliableManeuversAvoidanceSupported`
+
+- New classes available:
+
+  `ClosureCandidateObject`
+
+  `ParkedReportObject`
+
+  `OverlayRenderSettingsObject`
+
+  `ActivityVideoPreviewContext`
+
+  `ActivityVideoFrameInfoObject`
+
+  `SpeedSectionAlarmObject`
+
+  `ActivityVideoPhotoObject`
+
+### Fixed
+
+- `SocialOverlayContext` `report:categoryId:description:snapshot:completionHandler:` leaked its progress listener when the report was refused ( any code but `KNoError` / `KScheduled` ); the completion handler is not called in that case, as before.
+
+
 ## [2.2.8] - 2026-10-23
 
 **Build:** 7.1.26.39.9850AB13
